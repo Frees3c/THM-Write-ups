@@ -149,40 +149,55 @@ wall "AHHHHHHH THEEEEE BEEEEESSSS!!!!!!!!"
 Hmm keep getting 'walled' with random Nicholas Cage quotes.. So I uploaded `pspy64` to the box, `chmod +x ; ./pspy64`:
 ![pspy](Images/pspy.png)
 We can see that the file `spread_the_quotes.py` is being run as user:cage.
-Alternatively, `find / -type d -group cage 2>/dev/null/` will return the same results:
+<br />Alternatively, `find / -type d -group cage 2>/dev/null/` will return the same results:
+
 ```
+
 /opt/.dads_scripts
 /opt/.dads_scripts/spread_the_quotes.py
 /opt/.dads_scripts/.files
 /opt/.dads_scripts/.files/.quotes
+
 ```
+
 If we `cat spread_the_quotes.py` we can see its calling 'wall' + input from .quotes. This is our attack route.
 Modify `.quotes` to send us a python reverse shell:
-```
+
+```bash
 1. rm .quotes ; vim .quotes
 2. Frees3c was here ; <REV SHELL HERE>
 3. :wq
+
 ```
 Save and wait for the cronjob to run the script :
 ![Rev_success](Images/cage_rev_shell.png)
 
 # ~ Root;
 `ls -la`
-```
+
+```bash
+
 drwxrwxr-x 2 cage cage 4096 May 25 13:00 email_backup
 -rw-rw-r-- 1 cage cage  230 May 26 08:01 Super_Duper_Checklist
+
 ```
 `cat Super_Duper_Checklist`
+
 ```
+
 <Blah>
 <Blah>
 5 - Figure out why Weston has this etched into his desk: THM{ANSWER NO.2 FOUND HERE}
+
 ```
 `email_backup/`
+
 - email_1 : note "face" repeated several times.
 - email_2 : Sean's user name is root? 
 - email_3 : note "face" is mentioned several more times, and another _jumbled_ up word.
+
 ```
+
 Hey Son
 
 Buddy, Sean left a note on his desk with some really strange writing on it. I quickly wrote
@@ -201,8 +216,10 @@ Regards
 The Legend - Cage
 
 ```
+
 Decode the string to reveal a password. Then `su` to root!!
 <br />Enumerate the email_backup directory in /root to find  the root flag:
+
 ```
 Dear Sean
 
@@ -217,10 +234,10 @@ Sean Archer
 
 ```
 
-_**Thanks for reading.**_
+<br /> _**Thanks for reading.**_
 
 
 # Resources:
-https://www.boxentriq.com/code-breaking/vigenere-cipher
-https://github.com/DominicBreuker/pspy
+<br />https://www.boxentriq.com/code-breaking/vigenere-cipher
+<br />https://github.com/DominicBreuker/pspy
 
