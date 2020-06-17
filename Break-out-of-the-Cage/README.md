@@ -5,6 +5,8 @@
 <br />**Difficulty:** Easy
 <br />**URL:** https://tryhackme.com/room/breakoutthecage1
 
+A fun box, something for everyone. Got caught up trying to escape the Wall command, but after that root is simple. 
+
 # ~ Enumeration:
 
 ### **Nmap:**
@@ -127,6 +129,7 @@ Now we have Weston's password lets ssh into the box: `ssh weston@cage.thm`
 Let's perform some basic enumeration and see what we find..
 <br />`id` ; note group (cage)
 ```
+uid=1001(weston) gid=1001(weston) groups=1001(weston),1000(cage)
 
 ```
 `sudo -l`
@@ -148,8 +151,10 @@ Hmm keep getting 'walled' with random Nicholas Cage quotes.. So I uploaded `pspy
 We can see that the file `spread_the_quotes.py` is being run as user:cage.
 Alternatively, `find / -type d -group cage 2>/dev/null/` will return the same results:
 ```
-/opt/.dads_scritps/spread_the_quotes.py
-/opt/.dads_scritps/.files/.quotes
+/opt/.dads_scripts
+/opt/.dads_scripts/spread_the_quotes.py
+/opt/.dads_scripts/.files
+/opt/.dads_scripts/.files/.quotes
 ```
 If we `cat spread_the_quotes.py` we can see its calling 'wall' + input from .quotes. This is our attack route.
 Modify `.quotes` to send us a python reverse shell:
@@ -157,7 +162,6 @@ Modify `.quotes` to send us a python reverse shell:
 1. rm .quotes ; vim .quotes
 2. Frees3c was here ; <REV SHELL HERE>
 3. :wq
-4. chmod weston:cage .quotes
 ```
 Save and wait for the cronjob to run the script :
 ![Rev_success](Images/cage_rev_shell.png)
@@ -165,7 +169,8 @@ Save and wait for the cronjob to run the script :
 # ~ Root;
 `ls -la`
 ```
-
+drwxrwxr-x 2 cage cage 4096 May 25 13:00 email_backup
+-rw-rw-r-- 1 cage cage  230 May 26 08:01 Super_Duper_Checklist
 ```
 `cat Super_Duper_Checklist`
 ```
@@ -173,7 +178,7 @@ Save and wait for the cronjob to run the script :
 <Blah>
 5 - Figure out why Weston has this etched into his desk: THM{ANSWER NO.2 FOUND HERE}
 ```
-`emails/`
+`email_backup/`
 - email_1 : note "face" repeated several times.
 - email_2 : Sean's user name is root? 
 - email_3 : note "face" is mentioned several more times, and another _jumbled_ up word.
@@ -204,3 +209,5 @@ Decode the string to reveal a password. Then `su` to root!!
 
 # Resources:
 https://www.boxentriq.com/code-breaking/vigenere-cipher
+https://github.com/DominicBreuker/pspy
+
