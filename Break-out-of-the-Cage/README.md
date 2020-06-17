@@ -3,11 +3,13 @@
 # Break Out The Cage
 **Room by:** [Magna](https://tryhackme.com/p/Magna)
 <br />**Difficulty:** Easy
-<br />**URL:** https://tryhackme.com/room/breakoutthecage1
+<br />**URL:** [https://tryhackme.com](https://tryhackme.com/room/breakoutthecage1)
 
 A fun box, something for everyone. Got caught up trying to escape the Wall command, but after that root is simple. 
 
+
 # ~ Enumeration:
+
 
 ### **Nmap:**
 ```
@@ -43,9 +45,12 @@ Service detection performed. Please report any incorrect results at https://nmap
 # Nmap done at Mon Jun 15 21:41:24 2020 -- 1 IP address (1 host up) scanned in 8.36 seconds
 
 ```
+
 ### Web-server 
 ![web-server](Images/html.png)
+
 Not a lot happening here..
+
 
 ### Gobuster:
 ```
@@ -66,6 +71,8 @@ Not a lot happening here..
 - /auditions/must_practice_corrupt_file.mp3 ; Nick Cage audio clip with weird noise...
 - /contracts : contains empty file 
 
+
+
 ### FTP:
 
 ```
@@ -84,6 +91,8 @@ ftp> ls
 ftp> get dad_tasks
 
 ```
+
+
 # ~ Foothold:
 Download `/auditions/must_practice_corrupt_file.mp3`
 <br />Load the MP3 into Audacity and check the spectrogram at the  point the strange noise starts, it reveals a string/pass phrase :  
@@ -126,6 +135,8 @@ In case I forget.... <ANSWER TO TASK 1 FOUND HERE>
 ```
 
 <br />Now we have Weston's password lets ssh into the box: `ssh weston@cage.thm`
+
+
 
 # ~ PrivEsc to Cage:
 Let's perform some basic enumeration and see what we find..
@@ -173,6 +184,8 @@ Modify `.quotes` to send us a python reverse shell:
 ```
 Save and wait for the cronjob to run the script :
 ![Rev_success](Images/cage_rev_shell.png)
+
+
 
 # ~ Root;
 `ls -la`
@@ -222,6 +235,6 @@ Sean Archer
 
 
 ### Resources:
-<br />https://www.boxentriq.com/code-breaking/vigenere-cipher
-<br />https://github.com/DominicBreuker/pspy
+https://www.boxentriq.com/code-breaking/vigenere-cipher
+<br /> [PSPY](https://github.com/DominicBreuker/pspy)
 
