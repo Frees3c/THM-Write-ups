@@ -202,9 +202,22 @@ The Legend - Cage
 
 ```
 Decode the string to reveal a password. Then `su` to root!!
-<br /> Then enumerate the emails dir to find root flag:
-![root.txt](Images/root_email_2.png)
+<br />Enumerate the email_backup directory in /root to find  the root flag:
+```
+Dear Sean
 
+<REDACTED TEXT>
+<REDACTED TEXT>
+
+THM{ROOT FLAG HERE}
+
+Thank you
+
+Sean Archer
+
+```
+
+_**Thanks for reading.**_
 
 
 # Resources:
