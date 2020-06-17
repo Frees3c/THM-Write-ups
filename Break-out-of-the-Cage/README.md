@@ -112,18 +112,20 @@ The decoded base64 string looks like ROT13 or a ceaser cypher?
 >The Vigenère cipher is a method of encrypting alphabetic text by using a series of interwoven Caesar ciphers, based on the letters of a keyword. It employs a form of polyalphabetic substitution.
 
 Vigenère requires a key or pass phrase to decode the text. Let's use the text we found in the MP3 file earlier.
+
 ```
 Dads Tasks - The RAGE...THE CAGE... THE MAN... THE LEGEND!!!!
-One. Revamp the website
-Two. Put more quotes in script
-Three. Buy bee pesticide
-Four. Help him with acting lessons
-Five. Teach Dad what "information security" is.
+One. <SNIP>
+Two. <SNIP
+Three. <SNIP>
+Four. <SNIP>
+Five. <SNIP>
 
 In case I forget.... <ANSWER TO TASK 1 FOUND HERE>
+
 ```
 
-Now we have Weston's password lets ssh into the box: `ssh weston@cage.thm`
+<br />Now we have Weston's password lets ssh into the box: `ssh weston@cage.thm`
 
 # ~ PrivEsc to Cage:
 Let's perform some basic enumeration and see what we find..
@@ -190,34 +192,15 @@ drwxrwxr-x 2 cage cage 4096 May 25 13:00 email_backup
 5 - Figure out why Weston has this etched into his desk: THM{ANSWER NO.2 FOUND HERE}
 
 ```
+
 `email_backup/`
 
 - email_1 : note "face" repeated several times.
 - email_2 : Sean's user name is root? 
 - email_3 : note "face" is mentioned several more times, and another _jumbled_ up word.
 
-```
 
-Hey Son
-
-Buddy, Sean left a note on his desk with some really strange writing on it. I quickly wrote
-down what it said. Could you look into it please? I think it could be something to do with his
-account on here. I want to know what he's hiding from me... I might need a new agent. Pretty
-sure he's out to get me. The note said:
-
-<ENCODED PHRASE HERE>
-
-The guy also seems obsessed with my face lately. He came him wearing a mask of my face...
-was rather odd. Imagine wearing his ugly face.... I wouldnt be able to FACE that!! 
-hahahahahahahahahahahahahahahaahah get it Weston! FACE THAT!!!! hahahahahahahhaha
-ahahahhahaha. Ahhh Face it... he's just odd. 
-
-Regards
-The Legend - Cage
-
-```
-
-Decode the string to reveal a password. Then `su` to root!!
+<br />Decode the string to reveal a password. Then `su` to root!!
 <br />Enumerate the email_backup directory in /root to find  the root flag:
 
 ```
