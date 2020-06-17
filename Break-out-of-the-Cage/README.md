@@ -200,7 +200,7 @@ drwxrwxr-x 2 cage cage 4096 May 25 13:00 email_backup
 - email_3 : note "face" is mentioned several more times, and another _jumbled_ up word.
 
 
-<br />Decode the string to reveal a password. Then `su` to root!!
+<br />Decode the Vigenere cypher using 'FACE' ass the Key to reveal a password. Then `su` to root!!
 <br />Enumerate the email_backup directory in /root to find  the root flag:
 
 ```
@@ -217,10 +217,11 @@ Sean Archer
 
 ```
 
+<br />
 <br /> _**Thanks for reading.**_
 
 
-# Resources:
+### Resources:
 <br />https://www.boxentriq.com/code-breaking/vigenere-cipher
 <br />https://github.com/DominicBreuker/pspy
 
