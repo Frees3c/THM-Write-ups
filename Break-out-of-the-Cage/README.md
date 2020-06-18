@@ -5,7 +5,7 @@
 <br />**Difficulty:** Easy
 <br />**URL:** [https://tryhackme.com](https://tryhackme.com/room/breakoutthecage1)
 
-A fun box, something for everyone. Got caught up trying to escape the Wall command, but after that root is simple. 
+A fun box, something for everyone. Got caught up trying to escape the Wall command, but after that root was simple. 
 
 
 # ~ Enumeration:
@@ -159,7 +159,7 @@ wall "AHHHHHHH THEEEEE BEEEEESSSS!!!!!!!!"
 `find / -perm -4000 2>/dev/null`
 > Nothing interesting here..
 
-Hmm keep getting 'walled' with random Nicholas Cage quotes.. So I uploaded `pspy64` to the box, `chmod +x ; ./pspy64`:
+Hmm keep getting walled with random Nicholas Cage quotes.. So I uploaded `pspy64` to the box, `chmod +x ; ./pspy64`:
 ![pspy](Images/pspy.png)
 We can see that the file `spread_the_quotes.py` is being run as user:cage.
 <br />Alternatively, `find / -type d -group cage 2>/dev/null/` will return the same results:
@@ -173,7 +173,7 @@ We can see that the file `spread_the_quotes.py` is being run as user:cage.
 
 ```
 
-If we `cat spread_the_quotes.py` we can see its calling 'wall' + input from .quotes. This is our attack route.
+If we `cat spread_the_quotes.py` we can see its calling wall + input from .quotes. This is our attack route.
 Modify `.quotes` to send us a python reverse shell:
 
 ```bash
@@ -209,11 +209,11 @@ drwxrwxr-x 2 cage cage 4096 May 25 13:00 email_backup
 `email_backup/`
 
 - email_1 : note "face" repeated several times.
-- email_2 : Sean's user name is root? 
-- email_3 : note "face" is mentioned several more times, and another _jumbled_ up word.
+- email_2 : Sean's user name is root?
+- email_3 : note "face" is mentioned several more times, and another **_jumbled_** up word.
 
 
-<br />Decode the Vigenere cypher using 'FACE' ass the Key to reveal a password. Then `su` to root!!
+<br />Decode the Vigenere cypher using FACE as the Key to reveal a password. Then `su` to root!!
 <br />Enumerate the email_backup directory in /root to find  the root flag:
 
 ```
@@ -230,11 +230,10 @@ Sean Archer
 
 ```
 
-<br />
-<br /> _**Thanks for reading.**_
+
+ _**Thanks** **for** **reading**_
 
 
 ### Resources:
-https://www.boxentriq.com/code-breaking/vigenere-cipher
+<br /> [vigenere decoder](https://www.boxentriq.com/code-breaking/vigenere-cipher)
 <br /> [PSPY](https://github.com/DominicBreuker/pspy)
-
