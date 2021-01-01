@@ -1,4 +1,4 @@
-![banner](//img/thm/smag/banner.png)
+![banner](../../Images/banner.png)
 
 
 **Room by:** 
@@ -37,7 +37,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 **HTML**
 <br />
 
-[![html](//img/thm/smag/welcome.png)](/Images/welcome.png)
+[![html](/Images/welcome.png)](/Images/welcome.png)
 
 <br />
 
